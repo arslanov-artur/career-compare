@@ -27,7 +27,11 @@ const AgencyColumn: React.FC<Props> = ({ agency, matches, onLevelClick }) => {
     <div className="bg-white rounded-2xl shadow-soft py-2 md:py-6 px-2">
       <div className="flex items-center gap-3 mb-6">
         <div className="w-12 h-12 rounded-xl flex items-center justify-center">
-          <img src={agency.logo} alt={agency.name} className="w-12 h-12 rounded-xl" />
+          <img
+            src={agency.logo}
+            alt={agency.name}
+            className="w-12 h-12 rounded-xl"
+          />
         </div>
         <div>
           <h2 className="text-xl font-bold text-gray-900">{agency.name}</h2>
