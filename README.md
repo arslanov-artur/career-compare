@@ -22,10 +22,10 @@ It's better to use something like tabs rather than forcing users to scroll (othe
 
 ## Tech Stack
 
-TypeScript
-React 19
-Vite
-Tailwind (with similar design palette to https://salaryguide.com/)
+* TypeScript
+* React 19
+* Vite
+* Tailwind
 
 ## Code Quality
 
