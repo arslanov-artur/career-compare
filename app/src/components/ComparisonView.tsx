@@ -40,7 +40,7 @@ const ComparisonView: React.FC<Props> = ({
           ))}
         </div>
 
-        <div className="p-4">
+        <div className="py-6">
           <AgencyColumn
             agency={agencies[activeTab]}
             matches={matches}

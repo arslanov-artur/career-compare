@@ -49,7 +49,7 @@ export const App = () => {
         </div>
       </header>
 
-      <main className="max-w-7xl mx-auto px-4 py-8">
+      <main className="max-w-7xl mx-auto px-4 py-4 md:py-4">
         {agencies.length > 0 && (
           <ComparisonView
             agencies={agencies}

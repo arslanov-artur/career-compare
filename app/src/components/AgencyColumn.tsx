@@ -24,7 +24,7 @@ const AgencyColumn: React.FC<Props> = ({ agency, matches, onLevelClick }) => {
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-soft p-6">
+    <div className="bg-white rounded-2xl shadow-soft py-2 md:py-6 px-2">
       <div className="flex items-center gap-3 mb-6">
         <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center">
           <span className="text-xl font-bold text-emerald-600">

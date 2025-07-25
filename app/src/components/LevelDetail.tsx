@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import type { Agency, Level, LevelMatch } from "../types";
 
@@ -16,9 +16,19 @@ type Props = {
 const LevelDetail: React.FC<Props> = ({ agency, level, match, onClose }) => {
   const isMobile = useMediaQuery("(max-width: 768px)");
 
+  useEffect(() => {
+    if (isMobile) {
+      // Prevent body scroll on mobile when modal is open
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = "";
+      };
+    }
+  }, [isMobile]);
+
   const content = (
-    <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-medium">
-      <div className="flex justify-between items-start mb-6">
+    <div className={`bg-white ${isMobile ? 'p-4' : 'rounded-2xl p-6 border border-gray-200 shadow-medium'}`}>
+      <div className={`flex justify-between items-start ${isMobile ? 'mb-4' : 'mb-6'}`}>
         <div>
           <div className="flex items-center gap-3 mb-2">
             <div className="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center">
@@ -62,11 +72,11 @@ const LevelDetail: React.FC<Props> = ({ agency, level, match, onClose }) => {
       </div>
 
       {level.minSalary && level.maxSalary && (
-        <div className="mb-6">
-          <h3 className="text-lg font-semibold mb-3 text-gray-900">
+        <div className={isMobile ? 'mb-4' : 'mb-6'}>
+          <h3 className={`text-lg font-semibold ${isMobile ? 'mb-2' : 'mb-3'} text-gray-900`}>
             Compensation
           </h3>
-          <div className="bg-gray-50 p-4 rounded-xl">
+          <div className={`bg-gray-50 ${isMobile ? 'p-3' : 'p-4'} rounded-xl`}>
             <div className="flex justify-between mb-2">
               <span className="text-gray-600">Salary Range:</span>
               <span className="font-medium text-gray-900">
@@ -85,8 +95,8 @@ const LevelDetail: React.FC<Props> = ({ agency, level, match, onClose }) => {
       )}
 
       {level.yearsExperience && (
-        <div className="mb-6">
-          <h3 className="text-lg font-semibold mb-3 text-gray-900">
+        <div className={isMobile ? 'mb-4' : 'mb-6'}>
+          <h3 className={`text-lg font-semibold ${isMobile ? 'mb-2' : 'mb-3'} text-gray-900`}>
             Experience Required
           </h3>
           <p className="text-gray-700">{level.yearsExperience} years</p>
@@ -104,12 +114,12 @@ const LevelDetail: React.FC<Props> = ({ agency, level, match, onClose }) => {
           if (!matchedLevel) return null;
 
           return (
-            <div className="border-t pt-6">
-              <h3 className="text-lg font-semibold mb-3 text-gray-900">
+            <div className={`border-t ${isMobile ? 'pt-4' : 'pt-6'}`}>
+              <h3 className={`text-lg font-semibold ${isMobile ? 'mb-2' : 'mb-3'} text-gray-900`}>
                 Equivalent Position
               </h3>
 
-              <div className="bg-emerald-50 p-4 rounded-xl">
+              <div className={`bg-emerald-50 ${isMobile ? 'p-3' : 'p-4'} rounded-xl`}>
                 <div className="flex items-center justify-between mb-3">
                   <div>
                     <p className="font-medium text-gray-900">
@@ -174,11 +184,14 @@ const LevelDetail: React.FC<Props> = ({ agency, level, match, onClose }) => {
   }
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center p-4 backdrop-blur-[1px]">
-      <div className="max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-        {content}
+    <>
+      <div className="fixed inset-0 bg-black/50 z-40" onClick={onClose} />
+      <div className="fixed inset-0 flex items-center justify-center p-4 z-50">
+        <div className="max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+          {content}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
