@@ -14,6 +14,7 @@ It's better to use something like Tabs rather than forcing user to scroll (then 
 * [X] Supports more complicated data (for example, 5+ years)
 * [X] Validates and sanitizes data
 * [X] Highlight compensation for equivalent positions
+* [X] Smooth modal opening
 
 ### Mobile UX
 
@@ -95,7 +96,7 @@ Realistic salary range: 60K - 1M
 ## What would I add with more time
 
 1. Tests for calculations/mappers (that's the core functionality of this app)
-2. Modals for Level detail works fine, but I would make it more smoother (to improve UX)
+2. FIXED: Modals for Level detail works fine, but I would make it more smoother (to improve UX)
 
 ## Additional
 
