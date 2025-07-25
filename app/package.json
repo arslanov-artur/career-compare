@@ -10,7 +10,8 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "preview": "vite preview",
-    "prepare": "cd .. && husky"
+    "prepare": "cd .. && husky",
+    "deploy": "vercel --prod"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.11",

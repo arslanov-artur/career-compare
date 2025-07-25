@@ -1,41 +1,41 @@
+# Career Comparison Tool
+
+A tool that compares career levels and compensation between two paid media agencies.
+
 ## Design
 
 Aligns with https://salaryguide.com
 
 ### Mobile UX
 
-It's better to use something like Tabs rather than forcing user to scroll (then you can't visually "compare" them)
+It's better to use something like tabs rather than forcing users to scroll (otherwise you can't visually "compare" them)
 
 ## Functionality
 
-* [X] Side-by-side compares the positions
-* [X] Shows position in details in modal
+* [X] Side-by-side comparison of positions
+* [X] Validates and sanitizes data
+* [X] Shows position details in modal
 * [X] Adapted to mobile devices
 * [X] Supports more complicated data (for example, 5+ years)
-* [X] Validates and sanitizes data
 * [X] Highlight compensation for equivalent positions
 * [X] Smooth modal opening (100ms)
-
-### Mobile UX
-
-It's better to use something like Tabs rather than forcing user to scroll (then you can't visually "compare" them)
 
 ## Tech Stack
 
 TypeScript
 React 19
 Vite
-Tailwind (with similary to https://salaryguide.com/ design palette)
+Tailwind (with similar design palette to https://salaryguide.com/)
 
 ## Code Quality
 
-We're using typescript, linter, prettier, and husky (pre-commit and pre-push hooks) with relatively strict rules to ensure that code is readable, maintainable and prevent potentials errors
+We're using TypeScript, ESLint, Prettier, and Husky (pre-commit and pre-push hooks) with relatively strict rules to ensure that code is readable, maintainable and prevent potential errors
 
 TODO: Add tests (jest) for core functionality
 
 ## Position Level Mapping
 
-Each positions level finds its best match based on experience requirements and salary range
+Each position level finds its best match based on experience requirements and salary range
 
 ### Experience formats
 
@@ -58,30 +58,30 @@ We're calculating percentage "overlap" between two experience ranges (src/utils/
 [2-4] and [3-5] = 33% (partial overlap)
 [2-4] and [2-4] = 100% (complete overlap)
 
-### Salary Similarity Calculate
+### Salary Similarity Calculation
 
-Then we compare salary ranges (median values) and return "similarity" percentage (src/utils/calculations/salary.ts)
+Then we compare salary ranges (median values) and return the "similarity" percentage (src/utils/calculations/salary.ts)
 
 50000 and 100000 = 33% similarity
 50000 and 60000 = ~82% similarity
 50000 and 50000 = 100% similarity
 
-### Match by weight
+### Match by Weight
 
 **Assumption 2:** weight system is optimal for this task
 
-Combines experience and salary metric with "weights" (easy to configure for our needs) (src/utils/match/level.match.ts)
+Combines experience and salary metrics with "weights" (easy to configure for our needs) (src/utils/match/level.match.ts)
 
 **Assumption 3:** Experience weight is a bit more (60%) than salary (40%)
 
-Match is only happen when "confidence" >= 50%
+Matches only happen when "confidence" >= 50%
 
 ### Data Validation
 
 **Assumption 3:** We need to filter unrealistic data
-Realistic salary range: 60K - 1M
+Realistic salary range: $60K - $1M
 
-**Assumption 4:** Experience range "+" means 5 years
+**Assumption 4:** Experience range "+" means additional 5 years
 
 **Assumption 5:** Minimum confidence: 50%
 
@@ -95,9 +95,9 @@ Realistic salary range: 60K - 1M
 
 ## What would I add with more time
 
-1. Tests for calculations/mappers (that's the core functionality of this app)
-2. FIXED: Modals for Level detail works fine, but I would make it more smoother (to improve UX)
+1. Tests for calculations/mappers (that's the core functionality of this app) and verify all the functionality
+2. FIXED: Modals for level details work fine, but I would make them smoother (to improve UX)
 
 ## Additional
 
-I added agency logos from internet, just to make it look better
+Added agency logos from internet, just to make it look better
