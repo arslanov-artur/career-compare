@@ -93,74 +93,75 @@ const LevelDetail: React.FC<Props> = ({ agency, level, match, onClose }) => {
         </div>
       )}
 
-      {match && (() => {
-        const isSource = agency.name === match.sourceAgencyName;
-        const matchedLevel = isSource ? match.targetLevel : match.sourceLevel;
-        const matchedAgencyName = isSource ? match.targetAgencyName : match.sourceAgencyName;
+      {match &&
+        (() => {
+          const isSource = agency.name === match.sourceAgencyName;
+          const matchedLevel = isSource ? match.targetLevel : match.sourceLevel;
+          const matchedAgencyName = isSource
+            ? match.targetAgencyName
+            : match.sourceAgencyName;
 
-        if (!matchedLevel) return null;
+          if (!matchedLevel) return null;
 
-        return (
-          <div className="border-t pt-6">
-            <h3 className="text-lg font-semibold mb-3 text-gray-900">
-              Equivalent Position
-            </h3>
+          return (
+            <div className="border-t pt-6">
+              <h3 className="text-lg font-semibold mb-3 text-gray-900">
+                Equivalent Position
+              </h3>
 
-            <div className="bg-emerald-50 p-4 rounded-xl">
-              <div className="flex items-center justify-between mb-3">
-                <div>
-                  <p className="font-medium text-gray-900">
-                    {matchedLevel.title.replace(/([A-Z])/g, " $1").trim()}
-                  </p>
-                  <p className="text-sm text-gray-600">
-                    {matchedAgencyName}
-                  </p>
-                </div>
-                <span className="text-sm bg-emerald-600 text-white px-2 py-1 rounded">
-                  {Math.round(match.confidence)}% match
-                </span>
-              </div>
-
-              {matchedLevel.minSalary &&
-                matchedLevel.maxSalary &&
-                level.minSalary &&
-                level.maxSalary && (
-                  <div className="mt-3 pt-3 border-t border-emerald-200">
-                    <p className="text-sm text-gray-600 mb-1">
-                      Salary Difference:
-                    </p>
+              <div className="bg-emerald-50 p-4 rounded-xl">
+                <div className="flex items-center justify-between mb-3">
+                  <div>
                     <p className="font-medium text-gray-900">
-                      {(() => {
-                        const currentMedian =
-                          (level.minSalary + level.maxSalary) / 2;
-                        const matchMedian =
-                          (matchedLevel.minSalary +
-                            matchedLevel.maxSalary) /
-                          2;
-                        const diff = currentMedian - matchMedian;
-
-                        const percentage = matchMedian !== 0 ? (diff / matchMedian) * 100 : 0;
-
-                        if (diff === 0) {
-                          return <>No difference</>;
-                        }
-
-                        return (
-                          <>
-                            {diff > 0 ? "+" : ""}
-                            {formatSalary(Math.abs(diff))} (
-                            {diff > 0 ? "+" : "-"}
-                            {Math.abs(percentage).toFixed(1)}%)
-                          </>
-                        );
-                      })()}
+                      {matchedLevel.title.replace(/([A-Z])/g, " $1").trim()}
                     </p>
+                    <p className="text-sm text-gray-600">{matchedAgencyName}</p>
                   </div>
-                )}
+                  <span className="text-sm bg-emerald-600 text-white px-2 py-1 rounded">
+                    {Math.round(match.confidence)}% match
+                  </span>
+                </div>
+
+                {matchedLevel.minSalary &&
+                  matchedLevel.maxSalary &&
+                  level.minSalary &&
+                  level.maxSalary && (
+                    <div className="mt-3 pt-3 border-t border-emerald-200">
+                      <p className="text-sm text-gray-600 mb-1">
+                        Salary Difference:
+                      </p>
+                      <p className="font-medium text-gray-900">
+                        {(() => {
+                          const currentMedian =
+                            (level.minSalary + level.maxSalary) / 2;
+                          const matchMedian =
+                            (matchedLevel.minSalary + matchedLevel.maxSalary) /
+                            2;
+                          const diff = currentMedian - matchMedian;
+
+                          const percentage =
+                            matchMedian !== 0 ? (diff / matchMedian) * 100 : 0;
+
+                          if (diff === 0) {
+                            return <>No difference</>;
+                          }
+
+                          return (
+                            <>
+                              {diff > 0 ? "+" : ""}
+                              {formatSalary(Math.abs(diff))} (
+                              {diff > 0 ? "+" : "-"}
+                              {Math.abs(percentage).toFixed(1)}%)
+                            </>
+                          );
+                        })()}
+                      </p>
+                    </div>
+                  )}
+              </div>
             </div>
-          </div>
-        );
-      })()}
+          );
+        })()}
     </div>
   );
 

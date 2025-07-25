@@ -65,8 +65,10 @@ export const App = () => {
           level={selectedLevel.level}
           match={matches.find(
             (m) =>
-              (m.sourceLevel.level === selectedLevel.level.level && m.sourceAgencyName === selectedLevel.agency) ||
-              (m.targetLevel?.level === selectedLevel.level.level && m.targetAgencyName === selectedLevel.agency),
+              (m.sourceLevel.level === selectedLevel.level.level &&
+                m.sourceAgencyName === selectedLevel.agency) ||
+              (m.targetLevel?.level === selectedLevel.level.level &&
+                m.targetAgencyName === selectedLevel.agency),
           )}
           onClose={closeDetail}
         />

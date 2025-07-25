@@ -3,8 +3,8 @@ import type { Level } from "../../types";
 /**
  * Calculates salary similarity between two levels (0-100%)
  *
- * $50K - $100K -> 0% similarity
- * $50K - $60K -> ~85% similarity
+ * $50K - $100K -> 33% similarity
+ * $50K - $60K -> ~82% similarity
  * $50K - $50K -> 100% similarity
  */
 export const calculateSalarySimilarity = (

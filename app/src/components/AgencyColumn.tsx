@@ -12,16 +12,14 @@ type Props = {
   onLevelClick: (level: Level) => void;
 };
 
-const AgencyColumn: React.FC<Props> = ({
-  agency,
-  matches,
-  onLevelClick,
-}) => {
+const AgencyColumn: React.FC<Props> = ({ agency, matches, onLevelClick }) => {
   const getLevelMatch = (level: Level): LevelMatch | undefined => {
     return matches.find(
       (match) =>
-        (match.sourceAgencyName === agency.name && match.sourceLevel.level === level.level) ||
-        (match.targetAgencyName === agency.name && match.targetLevel?.level === level.level)
+        (match.sourceAgencyName === agency.name &&
+          match.sourceLevel.level === level.level) ||
+        (match.targetAgencyName === agency.name &&
+          match.targetLevel?.level === level.level),
     );
   };
 

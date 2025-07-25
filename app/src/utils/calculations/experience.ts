@@ -4,7 +4,7 @@ import type { ExperienceRange } from "../../types";
  * Calculates abstract "confidence" value based on salary and experience
  *
  * [0-2] and [5-7] = 0%
- * [2-4] and [3-5] = 50%
+ * [2-4] and [3-5] = 33%
  * [2-4] and [2-4] = 100%
  */
 export const calculateExperienceOverlapPercentage = (
