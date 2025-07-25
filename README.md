@@ -1,3 +1,37 @@
+## Design
+
+Aligns with https://salaryguide.com
+
+### Mobile UX
+
+It's better to use something like Tabs rather than forcing user to scroll (then you can't visually "compare" them)
+
+## Functionality
+
+* [X] Side-by-side compares the positions
+* [X] Shows position in details in modal
+* [X] Adapted to mobile devices
+* [X] Supports more complicated data (for example, 5+ years)
+* [X] Validates and sanitizes data
+* [X] Highlight compensation for equivalent positions
+
+### Mobile UX
+
+It's better to use something like Tabs rather than forcing user to scroll (then you can't visually "compare" them)
+
+## Tech Stack
+
+TypeScript
+React 19
+Vite
+Tailwind (with similary to https://salaryguide.com/ design palette)
+
+## Code Quality
+
+We're using typescript, linter, prettier, and husky (pre-commit and pre-push hooks) with relatively strict rules to ensure that code is readable, maintainable and prevent potentials errors
+
+TODO: Add tests (jest) for core functionality
+
 ## Position Mapping
 
 Each positions level finds its best match based on experience requirements and salary range
@@ -61,3 +95,4 @@ Realistic salary range: 60K - 1M
 ## What would I add with more time
 
 1. Tests for calculations/mappers (that's the core functionality of this app)
+2. Modals for Level detail works fine, but I would make it more smoother (to improve UX)
