@@ -1,0 +1,16 @@
+msg="feat: New feature"
+commitRegex='^(feat|fix|refactor|test|app): .+$'
+
+if [ "$(wc -m < "$1" | xargs)" -gt 150 ]; then
+  echo "Too long commit message";
+  exit 1
+fi
+
+if ! grep -qE "$commitRegex" "$1"; then
+  echo "Error: Commit message does not match the template";
+  echo "Example:";
+  echo "   $msg";
+  echo "Your message:";
+  echo "   $(cat "$1")";
+  exit 1
+fi
