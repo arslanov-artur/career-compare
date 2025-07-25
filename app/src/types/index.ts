@@ -18,7 +18,9 @@ export type Agency = {
 };
 
 export type LevelMatch = {
-  wpromoteLevel: Level;
-  tinuitiLevel: Level | null;
+  sourceLevel: Level;
+  targetLevel: Level | null;
+  sourceAgencyName: string;
+  targetAgencyName: string;
   confidence: number;
 };

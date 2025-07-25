@@ -10,21 +10,19 @@ type Props = {
   agency: Agency;
   matches: LevelMatch[];
   onLevelClick: (level: Level) => void;
-  matchSide: "wpromote" | "tinuiti";
 };
 
 const AgencyColumn: React.FC<Props> = ({
   agency,
   matches,
   onLevelClick,
-  matchSide,
 }) => {
   const getLevelMatch = (level: Level): LevelMatch | undefined => {
-    if (matchSide === "wpromote") {
-      return matches.find((match) => match.wpromoteLevel.level === level.level);
-    }
-
-    return matches.find((match) => match.tinuitiLevel?.level === level.level);
+    return matches.find(
+      (match) =>
+        (match.sourceAgencyName === agency.name && match.sourceLevel.level === level.level) ||
+        (match.targetAgencyName === agency.name && match.targetLevel?.level === level.level)
+    );
   };
 
   return (

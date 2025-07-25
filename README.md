@@ -96,3 +96,7 @@ Realistic salary range: 60K - 1M
 
 1. Tests for calculations/mappers (that's the core functionality of this app)
 2. Modals for Level detail works fine, but I would make it more smoother (to improve UX)
+
+## Additional
+
+I added agency logos from internet, just to make it look better

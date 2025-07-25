@@ -5,7 +5,7 @@ import type { Agency, Level, LevelMatch } from "./types";
 // Dummy data instead of API
 import { dummyData } from "./api/dummy";
 
-import { findBestMatchingLevel } from "./utils/match/level.match";
+import { mapCareerLevels } from "./utils/mappers";
 
 import ComparisonView from "./components/ComparisonView";
 import LevelDetail from "./components/LevelDetail";
@@ -19,25 +19,13 @@ export const App = () => {
   } | null>(null);
 
   useEffect(() => {
-    const wpromote = dummyData.agencies.wpromote;
-    const tinuiti = dummyData.agencies.tinuiti;
+    const agencyList = Object.values(dummyData.agencies);
+    setAgencies(agencyList);
 
-    setAgencies([wpromote, tinuiti]);
-
-    const levelMatches: LevelMatch[] = wpromote.levels.map((wLevel) => {
-      const { matchedLevel, confidenceScore } = findBestMatchingLevel(
-        wLevel,
-        tinuiti.levels,
-      );
-
-      return {
-        wpromoteLevel: wLevel,
-        tinuitiLevel: matchedLevel,
-        confidence: Math.round(confidenceScore),
-      };
-    });
-
-    setMatches(levelMatches);
+    if (agencyList.length >= 2) {
+      const levelMatches = mapCareerLevels(agencyList[0], agencyList[1]);
+      setMatches(levelMatches);
+    }
   }, []);
 
   const handleLevelClick = (agency: string, level: Level) => {
@@ -77,8 +65,8 @@ export const App = () => {
           level={selectedLevel.level}
           match={matches.find(
             (m) =>
-              m.wpromoteLevel.level === selectedLevel.level.level ||
-              m.tinuitiLevel?.level === selectedLevel.level.level,
+              (m.sourceLevel.level === selectedLevel.level.level && m.sourceAgencyName === selectedLevel.agency) ||
+              (m.targetLevel?.level === selectedLevel.level.level && m.targetAgencyName === selectedLevel.agency),
           )}
           onClose={closeDetail}
         />

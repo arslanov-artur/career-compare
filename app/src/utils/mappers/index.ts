@@ -3,43 +3,45 @@ import { findBestMatchingLevel } from "../match/level.match";
 import { sanitizeLevelData } from "../validations/level.validation";
 
 /**
- * Maps career levels between Wpromote and Tinuiti agencies
+ * Maps career levels between two agencies
  *
  * 1. Validates, sanitizes input data
- * 2. For each Wpromote level, find best Tinuiti match
+ * 2. For each source level, find best target match
  * 3. Return matches with confidence scores
  *
  * Not all levels will have matches (confidence < 50%)
  */
 export const mapCareerLevels = (
-  wpromoteAgency: Agency,
-  tinuitiAgency: Agency,
+  sourceAgency: Agency,
+  targetAgency: Agency,
 ): LevelMatch[] => {
-  if (!wpromoteAgency?.levels || !tinuitiAgency?.levels) {
+  if (!sourceAgency?.levels || !targetAgency?.levels) {
     // eslint-disable-next-line no-console
     console.error("Invalid agency data");
     return [];
   }
 
-  const sanitizedWpromoteLevels = wpromoteAgency.levels.map(sanitizeLevelData);
-  const sanitizedTinuitiLevels = tinuitiAgency.levels.map(sanitizeLevelData);
+  const sanitizedSourceLevels = sourceAgency.levels.map(sanitizeLevelData);
+  const sanitizedTargetLevels = targetAgency.levels.map(sanitizeLevelData);
 
-  if (sanitizedWpromoteLevels.length === 0) {
+  if (sanitizedSourceLevels.length === 0) {
     // eslint-disable-next-line no-console
-    console.warn("Wpromote has no career levels");
+    console.warn(`${sourceAgency.name} has no career levels`);
     return [];
   }
 
-  const levelMatches: LevelMatch[] = sanitizedWpromoteLevels.map(
-    (wpromoteLevel) => {
+  const levelMatches: LevelMatch[] = sanitizedSourceLevels.map(
+    (sourceLevel) => {
       const matchResult = findBestMatchingLevel(
-        wpromoteLevel,
-        sanitizedTinuitiLevels,
+        sourceLevel,
+        sanitizedTargetLevels,
       );
 
       return {
-        wpromoteLevel: wpromoteLevel,
-        tinuitiLevel: matchResult.matchedLevel,
+        sourceLevel: sourceLevel,
+        targetLevel: matchResult.matchedLevel,
+        sourceAgencyName: sourceAgency.name,
+        targetAgencyName: targetAgency.name,
         confidence: matchResult.confidenceScore,
       };
     },

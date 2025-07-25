@@ -1,5 +1,7 @@
 import React from "react";
+
 import type { Level } from "../types";
+
 import { formatSalary } from "../utils/formatters/salary.formatter";
 
 type Props = {

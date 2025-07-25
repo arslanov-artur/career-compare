@@ -6,7 +6,7 @@ import { MINIMUM_MATCH_CONFIDENCE } from "../const";
  */
 export const hasValidMatch = (match: LevelMatch): boolean => {
   return (
-    match.tinuitiLevel !== null && match.confidence >= MINIMUM_MATCH_CONFIDENCE
+    match.targetLevel !== null && match.confidence >= MINIMUM_MATCH_CONFIDENCE
   );
 };
 

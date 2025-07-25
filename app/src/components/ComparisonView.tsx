@@ -47,7 +47,6 @@ const ComparisonView: React.FC<Props> = ({
             onLevelClick={(level) =>
               onLevelClick(agencies[activeTab].name, level)
             }
-            matchSide={activeTab === 0 ? "wpromote" : "tinuiti"}
           />
         </div>
       </div>
@@ -56,13 +55,12 @@ const ComparisonView: React.FC<Props> = ({
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-      {agencies.map((agency, index) => (
+      {agencies.map((agency) => (
         <AgencyColumn
           key={agency.name}
           agency={agency}
           matches={matches}
           onLevelClick={(level) => onLevelClick(agency.name, level)}
-          matchSide={index === 0 ? "wpromote" : "tinuiti"}
         />
       ))}
     </div>
