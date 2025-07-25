@@ -10,7 +10,7 @@ import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
 import { globalIgnores } from 'eslint/config'
 
 export default tseslint.config([
-  globalIgnores(['dist']),
+  globalIgnores(['dist', 'node_modules', 'vite.config.ts']),
   {
     files: ['**/*.{ts,tsx}'],
     extends: [
@@ -30,6 +30,7 @@ export default tseslint.config([
     rules: {
       semi: 'error',
       indent: ['error', 2],
+      quotes: ['error', 'double'],
       'prettier/prettier': 'error',
       'prefer-const': 'error',
       'no-var': 'error',
