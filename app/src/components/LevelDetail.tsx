@@ -23,7 +23,8 @@ const LevelDetail: React.FC<Props> = ({ agency, level, match, onClose }) => {
     });
 
     if (isMobile) {
-      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+      const scrollbarWidth =
+        window.innerWidth - document.documentElement.clientWidth;
 
       document.body.style.overflow = "hidden";
       if (scrollbarWidth > 0) {
@@ -46,14 +47,12 @@ const LevelDetail: React.FC<Props> = ({ agency, level, match, onClose }) => {
       >
         <div>
           <div className="flex items-center gap-3 mb-2">
-            <div className="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center">
-              <span className="text-lg font-bold text-emerald-600">
-                <img
-                  src={agency.logo}
-                  alt={agency.name}
-                  className="w-10 h-10"
-                />
-              </span>
+            <div className="w-10 h-10 rounded-xl flex items-center justify-center">
+              <img
+                src={agency.logo}
+                alt={agency.name}
+                className="w-10 h-10 rounded-xl"
+              />
             </div>
             <span className="text-sm text-gray-600">{agency.name}</span>
           </div>
@@ -200,9 +199,11 @@ const LevelDetail: React.FC<Props> = ({ agency, level, match, onClose }) => {
 
   if (isMobile) {
     return (
-      <div className={`fixed inset-0 bg-white z-50 overflow-y-auto transition-opacity duration-100 ${
-        isVisible ? 'opacity-100' : 'opacity-0'
-      }`}>
+      <div
+        className={`fixed inset-0 bg-white z-50 overflow-y-auto transition-opacity duration-100 ${
+          isVisible ? "opacity-100" : "opacity-0"
+        }`}
+      >
         {content}
       </div>
     );
@@ -210,16 +211,18 @@ const LevelDetail: React.FC<Props> = ({ agency, level, match, onClose }) => {
 
   return (
     <>
-      <div 
+      <div
         className={`fixed inset-0 bg-black/50 z-40 transition-opacity duration-100 ${
-          isVisible ? 'opacity-100' : 'opacity-0'
-        }`} 
-        onClick={onClose} 
+          isVisible ? "opacity-100" : "opacity-0"
+        }`}
+        onClick={onClose}
       />
       <div className="fixed inset-0 flex items-center justify-center p-4 z-50">
-        <div className={`max-w-2xl w-full max-h-[90vh] overflow-y-auto transition-all duration-100 ${
-          isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
-        }`}>
+        <div
+          className={`max-w-2xl w-full max-h-[90vh] overflow-y-auto transition-all duration-100 ${
+            isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
+          }`}
+        >
           {content}
         </div>
       </div>

@@ -14,7 +14,7 @@ It's better to use something like Tabs rather than forcing user to scroll (then 
 * [X] Supports more complicated data (for example, 5+ years)
 * [X] Validates and sanitizes data
 * [X] Highlight compensation for equivalent positions
-* [X] Smooth modal opening
+* [X] Smooth modal opening (100ms)
 
 ### Mobile UX
 
@@ -33,7 +33,7 @@ We're using typescript, linter, prettier, and husky (pre-commit and pre-push hoo
 
 TODO: Add tests (jest) for core functionality
 
-## Position Mapping
+## Position Level Mapping
 
 Each positions level finds its best match based on experience requirements and salary range
 
