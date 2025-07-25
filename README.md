@@ -1,6 +1,9 @@
 # Career Comparison Tool
 
-A tool that compares career levels and compensation between two paid media agencies.
+A tool that compares career levels and compensation between two paid media agencies
+
+Deployed on Vercel:
+[https://career-comparison-tool-pvoo04bsa.vercel.app/](https://career-comparison-tool-pvoo04bsa.vercel.app/)
 
 ## Design
 
