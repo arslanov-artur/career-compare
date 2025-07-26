@@ -48,26 +48,26 @@ For now, we only have one format: "x-y" (such as "0-1", "1-3" etc.)
 
 So we're normalizing data (src/utils/parsers/experience.parser.ts)
 
-"2-4" → { min: 2, max: 4 }
-"5+" → { min: 5, max: 10 } (5-year range for "+")
-"3" → { min: 3, max: 3 }
-Invalid/empty → { min: 0, max: 0 }
+* "2-4" → { min: 2, max: 4 }
+* "5+" → { min: 5, max: 10 } (5-year range for "+")
+* "3" → { min: 3, max: 3 }
+* Invalid/empty → { min: 0, max: 0 }
 
 ### Experience Overlap
 
 We're calculating percentage "overlap" between two experience ranges (src/utils/calculations/experience.ts)
 
-[0-2] and [5-7] = 0% (no overlap)
-[2-4] and [3-5] = 33% (partial overlap)
-[2-4] and [2-4] = 100% (complete overlap)
+* [0-2] and [5-7] = 0% (no overlap)
+* [2-4] and [3-5] = 33% (partial overlap)
+* [2-4] and [2-4] = 100% (complete overlap)
 
 ### Salary Similarity Calculation
 
 Then we compare salary ranges (median values) and return the "similarity" percentage (src/utils/calculations/salary.ts)
 
-50000 and 100000 = 33% similarity
-50000 and 60000 = ~82% similarity
-50000 and 50000 = 100% similarity
+* 50000 and 100000 = 33% similarity
+* 50000 and 60000 = ~82% similarity
+* 50000 and 50000 = 100% similarity
 
 ### Match by Weight
 
